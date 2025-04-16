@@ -1,5 +1,5 @@
 # Create or Update Comment
-[![CI](https://github.com/peter-evans/create-or-update-comment/workflows/CI/badge.svg)](https://github.com/peter-evans/create-or-update-comment/actions?query=workflow%3ACI)
+[![CI](https://github.com/jimmyhan/create-or-update-comment/workflows/CI/badge.svg)](https://github.com/jimmyhan/create-or-update-comment/actions?query=workflow%3ACI)
 [![GitHub Marketplace](https://img.shields.io/badge/Marketplace-Create%20or%20Update%20Comment-blue.svg?colorA=24292e&colorB=0366d6&style=flat&longCache=true&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAM6wAADOsB5dZE0gAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAERSURBVCiRhZG/SsMxFEZPfsVJ61jbxaF0cRQRcRJ9hlYn30IHN/+9iquDCOIsblIrOjqKgy5aKoJQj4O3EEtbPwhJbr6Te28CmdSKeqzeqr0YbfVIrTBKakvtOl5dtTkK+v4HfA9PEyBFCY9AGVgCBLaBp1jPAyfAJ/AAdIEG0dNAiyP7+K1qIfMdonZic6+WJoBJvQlvuwDqcXadUuqPA1NKAlexbRTAIMvMOCjTbMwl1LtI/6KWJ5Q6rT6Ht1MA58AX8Apcqqt5r2qhrgAXQC3CZ6i1+KMd9TRu3MvA3aH/fFPnBodb6oe6HM8+lYHrGdRXW8M9bMZtPXUji69lmf5Cmamq7quNLFZXD9Rq7v0Bpc1o/tp0fisAAAAASUVORK5CYII=)](https://github.com/marketplace/actions/create-or-update-comment)
 
 A GitHub action to create or update an issue or pull request comment.
@@ -10,7 +10,7 @@ A GitHub action to create or update an issue or pull request comment.
 
 ```yml
       - name: Create comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: jimmyhan/create-or-update-comment@v4
         with:
           issue-number: 1
           body: |
@@ -18,7 +18,7 @@ A GitHub action to create or update an issue or pull request comment.
             - With GitHub **Markdown** :sparkles:
             - Created by [create-or-update-comment][1]
 
-            [1]: https://github.com/peter-evans/create-or-update-comment
+            [1]: https://github.com/jimmyhan/create-or-update-comment
           reactions: '+1'
 ```
 
@@ -26,7 +26,7 @@ A GitHub action to create or update an issue or pull request comment.
 
 ```yml
       - name: Update comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: jimmyhan/create-or-update-comment@v4
         with:
           comment-id: 557858210
           body: |
@@ -38,7 +38,7 @@ A GitHub action to create or update an issue or pull request comment.
 
 ```yml
       - name: Add reactions
-        uses: peter-evans/create-or-update-comment@v4
+        uses: jimmyhan/create-or-update-comment@v4
         with:
           comment-id: 557858210
           reactions: |
@@ -64,7 +64,7 @@ A GitHub action to create or update an issue or pull request comment.
 
 Note: In *public* repositories this action does not work in `pull_request` workflows when triggered by forks.
 Any attempt will be met with the error, `Resource not accessible by integration`.
-This is due to token restrictions put in place by GitHub Actions. Private repositories can be configured to [enable workflows](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#enabling-workflows-for-forks-of-private-repositories) from forks to run without restriction. See [here](https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#restrictions-on-repository-forks) for further explanation. Alternatively, use the [`pull_request_target`](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_target) event to comment on pull requests.
+This is due to token restrictions put in place by GitHub Actions. Private repositories can be configured to [enable workflows](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#enabling-workflows-for-forks-of-private-repositories) from forks to run without restriction. See [here](https://github.com/jimmyhan/create-pull-request/blob/main/docs/concepts-guidelines.md#restrictions-on-repository-forks) for further explanation. Alternatively, use the [`pull_request_target`](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_target) event to comment on pull requests.
 
 #### Outputs
 
@@ -73,7 +73,7 @@ Note that in order to read the step output the action step must have an id.
 
 ```yml
       - name: Create comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: jimmyhan/create-or-update-comment@v4
         id: couc
         with:
           issue-number: 1
@@ -98,13 +98,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add reaction
-        uses: peter-evans/create-or-update-comment@v4
+        uses: jimmyhan/create-or-update-comment@v4
         with:
           comment-id: ${{ github.event.comment.id }}
           reactions: eyes
 ```
 
-Some use cases might find the [find-comment](https://github.com/peter-evans/find-comment) action useful.
+Some use cases might find the [find-comment](https://github.com/jimmyhan/find-comment) action useful.
 This will search an issue or pull request for the first comment containing a specified string, and/or by a specified author.
 See the repository for detailed usage.
 
@@ -113,7 +113,7 @@ If the find-comment action output `comment-id` returns an empty string, a new co
 If it returns a value, the comment already exists and the content is replaced.
 ```yml
     - name: Find Comment
-      uses: peter-evans/find-comment@v3
+      uses: jimmyhan/find-comment@v3
       id: fc
       with:
         issue-number: ${{ github.event.pull_request.number }}
@@ -121,7 +121,7 @@ If it returns a value, the comment already exists and the content is replaced.
         body-includes: Build output
 
     - name: Create or update comment
-      uses: peter-evans/create-or-update-comment@v4
+      uses: jimmyhan/create-or-update-comment@v4
       with:
         comment-id: ${{ steps.fc.outputs.comment-id }}
         issue-number: ${{ github.event.pull_request.number }}
@@ -134,7 +134,7 @@ If it returns a value, the comment already exists and the content is replaced.
 If required, the create and update steps can be separated for greater control.
 ```yml
     - name: Find Comment
-      uses: peter-evans/find-comment@v3
+      uses: jimmyhan/find-comment@v3
       id: fc
       with:
         issue-number: ${{ github.event.pull_request.number }}
@@ -143,7 +143,7 @@ If required, the create and update steps can be separated for greater control.
 
     - name: Create comment
       if: steps.fc.outputs.comment-id == ''
-      uses: peter-evans/create-or-update-comment@v4
+      uses: jimmyhan/create-or-update-comment@v4
       with:
         issue-number: ${{ github.event.pull_request.number }}
         body: |
@@ -152,7 +152,7 @@ If required, the create and update steps can be separated for greater control.
 
     - name: Update comment
       if: steps.fc.outputs.comment-id != ''
-      uses: peter-evans/create-or-update-comment@v4
+      uses: jimmyhan/create-or-update-comment@v4
       with:
         comment-id: ${{ steps.fc.outputs.comment-id }}
         body: |
@@ -164,7 +164,7 @@ If required, the create and update steps can be separated for greater control.
 
 ```yml
       - name: Create comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: jimmyhan/create-or-update-comment@v4
         with:
           issue-number: 1
           body-path: 'comment-body.md'
@@ -190,7 +190,7 @@ The template is rendered using the [render-template](https://github.com/chuhlomi
             bar: that
 
       - name: Create comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: jimmyhan/create-or-update-comment@v4
         with:
           issue-number: 1
           body: ${{ steps.template.outputs.result }}
