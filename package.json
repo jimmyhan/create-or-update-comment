@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/peter-evans/create-or-update-comment.git"
+    "url": "git+https://github.com/jimmyhan/create-or-update-comment.git"
   },
   "keywords": [
     "actions",
@@ -23,9 +23,9 @@
   "author": "Peter Evans",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/peter-evans/create-or-update-comment/issues"
+    "url": "https://github.com/jimmyhan/create-or-update-comment/issues"
   },
-  "homepage": "https://github.com/peter-evans/create-or-update-comment#readme",
+  "homepage": "https://github.com/jimmyhan/create-or-update-comment#readme",
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@actions/github": "^6.0.0"

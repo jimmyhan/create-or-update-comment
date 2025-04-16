@@ -8,7 +8,7 @@ jobs:
 
       # Test create
       - name: Create comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: jimmyhan/create-or-update-comment@v4
         id: couc
         with:
           token: ${{ secrets.ACTIONS_BOT_TOKEN }}
@@ -18,12 +18,12 @@ jobs:
             - With GitHub **Markdown** :sparkles:
             - Created by [create-or-update-comment][1]
 
-            [1]: https://github.com/peter-evans/create-or-update-comment
+            [1]: https://github.com/jimmyhan/create-or-update-comment
           reactions: '+1'
 
       # Test update
       - name: Update comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: jimmyhan/create-or-update-comment@v4
         with:
           token: ${{ secrets.ACTIONS_BOT_TOKEN }}
           comment-id: ${{ steps.couc.outputs.comment-id }}
@@ -34,7 +34,7 @@ jobs:
 
       # Test add reactions
       - name: Add reactions
-        uses: peter-evans/create-or-update-comment@v4
+        uses: jimmyhan/create-or-update-comment@v4
         with:
           token: ${{ secrets.ACTIONS_BOT_TOKEN }}
           comment-id: ${{ steps.couc.outputs.comment-id }}
@@ -42,7 +42,7 @@ jobs:
 
       # Test create with body from file
       - name: Create comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: jimmyhan/create-or-update-comment@v4
         with:
           token: ${{ secrets.ACTIONS_BOT_TOKEN }}
           issue-number: 1
@@ -59,7 +59,7 @@ jobs:
             bar: that
 
       - name: Create comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: jimmyhan/create-or-update-comment@v4
         with:
           token: ${{ secrets.ACTIONS_BOT_TOKEN }}
           issue-number: 1
